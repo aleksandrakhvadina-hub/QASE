@@ -1,3 +1,5 @@
+package tests;
+
 import io.qameta.allure.Description; // ДОБАВЬ
 import io.qameta.allure.Feature; // ДОБАВЬ
 import io.qameta.allure.Story; // ДОБАВЬ
@@ -5,6 +7,9 @@ import org.testng.annotations.Test;
 import io.qameta.allure.Allure;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+
+import java.time.Duration;
+
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 import static com.codeborne.selenide.Condition.visible;
@@ -23,7 +28,7 @@ public class ProjectTest extends BaseTest {
         $("[name=email]").setValue("druzalexandra@gmail.com");
         $("[name=password]").setValue("o08UglWKWNPGJq4L");
         $(byText("Sign in")).click();
-
+        $(byText("Create new project")).shouldBe(visible, Duration.ofSeconds(30));
         $(byText("Create new project")).shouldBe(visible);
         takeScreenshot("После входа");
 
